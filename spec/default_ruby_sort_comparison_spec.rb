@@ -1,11 +1,13 @@
 # frozen_string_literal: true
 
+require 'spec_helper'
+
 RSpec.describe 'Default Ruby Sort vs Ukrainian Sort' do
   let(:ukrainian_words) do
     %w[
       яблуко апельсин ґава їжак єдинорог іржа
       банан виноград груша дуб ель жито зерно
-      ива йогурт капуста лимон щавель юкка ялина
+      ива йогурт капуста лимон щавель юка ялина
     ]
   end
 
@@ -13,7 +15,7 @@ RSpec.describe 'Default Ruby Sort vs Ukrainian Sort' do
     %w[
       апельсин банан виноград груша ґава дуб
       ель єдинорог жито зерно ива іржа їжак
-      йогурт капуста лимон щавель юкка яблуко
+      йогурт капуста лимон щавель юка яблуко
       ялина
     ]
   end
@@ -91,7 +93,7 @@ RSpec.describe 'Default Ruby Sort vs Ukrainian Sort' do
 
   describe 'Edge cases where default sort fails' do
     it 'handles words starting with special Ukrainian characters' do
-      words = %w[їжак іржа єдинорог яблуко ялина юкка]
+      words = %w[їжак іржа єдинорог яблуко ялина юка]
 
       ruby_sorted = words.sort
       ukrainian_sorted = UkrainianSort.sort(words)
@@ -100,7 +102,7 @@ RSpec.describe 'Default Ruby Sort vs Ukrainian Sort' do
       expect(ruby_sorted).not_to eq(ukrainian_sorted)
 
       # Ukrainian sort should be correct
-      expect(ukrainian_sorted).to eq(%w[єдинорог іржа їжак юкка яблуко ялина])
+      expect(ukrainian_sorted).to eq(%w[єдинорог іржа їжак юка яблуко ялина])
     end
 
     it 'handles mixed case scenarios correctly' do

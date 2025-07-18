@@ -1,39 +1,78 @@
-# UkrainianSort
+# Ukrainian Sort Gem
 
-TODO: Delete this and the text below, and describe your gem
+## Мотивація
+Сортування українського тексту не працює у Ruby через стандартний механізм сортування, який базується на Unicode-кодах. Результат не відповідає порядку українського алфавіту.
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/ukrainian_sort`. To experiment with that code, run `bin/console` for an interactive prompt.
+Ця бібліотека забезпечує правильне сортування відповідно до українського алфавіту, вирішуючи проблеми, як-от розташування 'ґ' та 'є'.
 
-## Installation
+## Motivation
+Sorting Ukrainian text correctly is a challenge with Ruby's default sorting mechanism. By default, Ruby sorts strings based on Unicode code points, which does not align with the Ukrainian alphabet.
 
-TODO: Replace `UPDATE_WITH_YOUR_GEM_NAME_IMMEDIATELY_AFTER_RELEASE_TO_RUBYGEMS_ORG` with your gem name right after releasing it to RubyGems.org. Please do not do it earlier due to security reasons. Alternatively, replace this section with instructions to install your gem from git if you don't plan to release to RubyGems.org.
+This gem ensures proper sorting according to the Ukrainian alphabet, addressing discrepancies like the placement of 'ґ' and 'є'.
 
-Install the gem and add to the application's Gemfile by executing:
-
-```bash
-bundle add UPDATE_WITH_YOUR_GEM_NAME_IMMEDIATELY_AFTER_RELEASE_TO_RUBYGEMS_ORG
+### Приклад / Example
+- Стандартне сортування Ruby / Default sort in Ruby:
+```
+["г", "е", "и", "й", "є", "і", "ї", "ґ"]
+```
+- ukrainian_sort gem:
+```
+["г", "ґ", "е", "є", "и", "і", "ї", "й"]
 ```
 
-If bundler is not being used to manage dependencies, install the gem by executing:
+### Unicode значення / Unicode values
+- г -> 1075
+- ґ -> 1169
+- е -> 1077
+- є -> 1108
+- и -> 1080
+- і -> 1110
+- й -> 1081
+- ї -> 1111
+
+### Сортування за Unicode-кодами (стандартне для Ruby) / Sort by Unicode (default in Ruby)
+```
+["г", "е", "и", "й", "є", "і", "ї", "ґ"]
+```
+### ukrainian_sort gem:
+```
+["г", "ґ", "е", "є", "и", "і", "ї", "й"]
+```
+
+
+## Installation
+Add this line to your application's Gemfile:
+
+```ruby
+gem 'ukrainian_sort'
+```
+
+And then execute:
 
 ```bash
-gem install UPDATE_WITH_YOUR_GEM_NAME_IMMEDIATELY_AFTER_RELEASE_TO_RUBYGEMS_ORG
+$ bundle install
+```
+
+Or install it yourself as:
+
+```bash
+$ gem install ukrainian_sort
 ```
 
 ## Usage
+To sort an array of Ukrainian strings:
 
-TODO: Write usage instructions here
+```ruby
+require 'ukrainian_sort'
 
-## Development
+words = ["яблуко", "ґава", "виноград", "єдинорог"]
+sorted_words = UkrainianSort.sort(words)
+puts sorted_words
+```
 
-After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake spec` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
+## Testing
+Run the test suite to ensure everything is working correctly:
 
-To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and the created tag, and push the `.gem` file to [rubygems.org](https://rubygems.org).
-
-## Contributing
-
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/ukrainian_sort.
-
-## License
-
-The gem is available as open source under the terms of the [MIT License](https://opensource.org/licenses/MIT).
+```bash
+$ rspec
+```

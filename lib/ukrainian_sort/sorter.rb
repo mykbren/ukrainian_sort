@@ -46,7 +46,7 @@ module UkrainianSort
     private
 
     def normalize(str)
-      str.downcase.chars.select { |c| c.match?(/\p{L}/) } # keep all letters
+      str.downcase.chars.grep(/\p{L}/) # keep all letters
     end
 
     def char_order_position(char)

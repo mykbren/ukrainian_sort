@@ -1,0 +1,15 @@
+plugins:
+  - rubocop-rspec
+  - rubocop-rake
+AllCops:
+  NewCops: enable
+Metrics/BlockLength:
+  Enabled: false
+Style/Documentation:
+  Enabled: false
+RSpec/DescribeClass:
+  Enabled: false
+RSpec/ExampleLength:
+  Enabled: false
+RSpec/MultipleExpectations:
+  Enabled: false
