@@ -20,12 +20,13 @@ Gem::Specification.new do |spec|
   spec.metadata['source_code_uri']  = spec.homepage
   spec.metadata['changelog_uri']    = "#{spec.homepage}/blob/main/CHANGELOG.md"
   spec.metadata['allowed_push_host'] = 'https://rubygems.org'
+  spec.metadata['rubygems_mfa_required'] = 'true'
 
   # Includes all files tracked by git
   spec.files = Dir.glob('lib/**/*') + Dir.glob('bin/*') + ['README.md', 'CHANGELOG.md', 'LICENSE.txt',
                                                            'ukrainian_sort.gemspec']
 
   spec.bindir        = 'bin'
-  spec.executables   = ['console', 'setup']
+  spec.executables   = %w[console setup]
   spec.require_paths = ['lib']
 end

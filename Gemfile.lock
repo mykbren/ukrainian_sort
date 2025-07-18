@@ -60,8 +60,9 @@ GEM
     unicode-emoji (4.0.4)
 
 PLATFORMS
-  ruby
+  arm64-darwin-22
   x86_64-darwin-23
+  x86_64-linux
 
 DEPENDENCIES
   leave_it (~> 0.1.1)
