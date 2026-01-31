@@ -76,3 +76,7 @@ Run the test suite to ensure everything is working correctly:
 ```bash
 $ rspec
 ```
+
+## Sponsor
+
+Development of this gem is sponsored by [tseivo.com](https://tseivo.com)
